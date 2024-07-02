@@ -124,8 +124,8 @@ const getClassResultById = (id) => {
 }
 
 const createClassResult = (body) => {
-    const SQLQuery = `  INSERT INTO class_results (date, patientId, ctscan, classification, label, doctorId, probability) 
-                        VALUES ('${body.date}', '${body.patientId}', '${body.ctscan}', '${body.classification}', '${body.label}', '${body.doctorId}', '${body.probability}');`;
+    const SQLQuery = `  INSERT INTO class_results (date, patientId, ctscan, classification, label, doctorId, accuracy) 
+                        VALUES ('${body.date}', '${body.patientId}', '${body.ctscan}', '${body.classification}', '${body.label}', '${body.doctorId}', '${body.accuracy}');`;
 
     return dbPool.execute(SQLQuery);
 }
@@ -134,7 +134,7 @@ const updateClassResult = (body, id) => {
     const SQLQuery = `  UPDATE class_results 
                         SET date='${body.date}', patientId='${body.patientId}', ctscan='${body.ctscan}', 
                             classification='${body.classification}', label='${body.label}', 
-                            doctorId='${body.doctorId}', probability='${body.probability}'
+                            doctorId='${body.doctorId}', accuracy='${body.accuracy}'
                         WHERE id=${id};`;
 
     return dbPool.execute(SQLQuery);

@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `faizwebm_pa_be` /*!40100 */;
-USE `faizwebm_pa_be`;
+CREATE DATABASE  IF NOT EXISTS `pa_be` /*!40100 */;
+USE `pa_be`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: localhost    Database: faizwebm_pa_be
+-- Host: localhost    Database: pa_be
 -- ------------------------------------------------------
 -- Server version	8.0.36
 

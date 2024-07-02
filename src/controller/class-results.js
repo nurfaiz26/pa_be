@@ -38,7 +38,7 @@ const createNewClassResult = async (req, res) => {
     console.log(req.body);
     const { body } = req;
 
-    if(!body.date || !body.patientId || !body.ctscan || !body.classification || !body.label || !body.doctorId || !body.probability) {
+    if(!body.date || !body.patientId || !body.ctscan || !body.classification || !body.label || !body.doctorId || !body.accuracy) {
         return res.status(400).json({
             message: 'Bad request, wrong input!',
             data: null

@@ -59,8 +59,8 @@ const upload = multer({
 app.use('/upload', upload.any(), (req, res) => {
     res.json({
         message: 'Gambar terupload!',
-        // url: `http://localhost:${PORT}/assets/${imageName}`,
-        url: `http://${process.env.PUBLIC_IP}:${PORT}/assets/${imageName}`,
+        url: `http://localhost:${PORT}/assets/${imageName}`,
+        // url: `https://api.ichwunden.my.id/assets/${imageName}`,
     });
 });
 app.use((err, req, res, next) => {
@@ -74,6 +74,4 @@ app.listen(PORT, () => {
     console.log(`Server berhasil running di port ${PORT}`);
 })
 
-// app.listen(() => {
-//     console.log(`Server berhasil running di port ${PORT}`);
-// })
+// app.listen(() => {})
