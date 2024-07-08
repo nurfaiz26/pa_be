@@ -30,7 +30,6 @@ app.use(express.json());
 //     res.setHeader("Access-Control-Allow-Headers", "*");
 //     next();
 // });
-
 app.use(cors({origin: true, credentials: true}));
 app.use('/users', accessValidation, usersRoutes);
 app.use('/patients', accessValidation, patientsRoutes);
