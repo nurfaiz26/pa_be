@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const PORT = process.env.PORT || 5000;
 const multer = require('multer');
+var cors = require('cors');
 
 // routes
 const usersRoutes = require('./routes/users');
@@ -23,12 +24,14 @@ const accessValidation = require('./middleware/accessValidation');
 const app = express();
 app.use(middlewareLogRequest);
 app.use(express.json());
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PATCH, DELETE");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    next();
-});
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "*");
+//     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PATCH, DELETE");
+//     res.setHeader("Access-Control-Allow-Headers", "*");
+//     next();
+// });
+
+app.use(cors({origin: true, credentials: true}));
 app.use('/users', accessValidation, usersRoutes);
 app.use('/patients', accessValidation, patientsRoutes);
 app.use('/class-results', accessValidation, classResultRoutes);
