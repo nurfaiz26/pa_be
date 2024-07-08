@@ -4,10 +4,17 @@ const getAllPatients = async (req, res) => {
     try {
         const [data] = await PatientModoel.getAllPatients();
 
-        res.json({
-            message: 'Get all Patients success',
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: 'Get all Patients success',
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
@@ -22,10 +29,17 @@ const getPatientById = async (req, res) => {
     try {
         const [data] = await PatientModoel.getPatientById(id);
 
-        res.json({
-            message: `Get Patients id = ${id} success`,
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: `Get Patients id = ${id} success`,
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',

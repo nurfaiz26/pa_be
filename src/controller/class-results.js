@@ -4,10 +4,17 @@ const getAllClassResults = async (req, res) => {
     try {
         const [data] = await ClassResultModoel.getAllClassResults();
 
-        res.json({
-            message: 'Get all Class Results success',
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: 'Get all Class Results success',
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
@@ -22,10 +29,17 @@ const getClassResultById = async (req, res) => {
     try {
         const [data] = await ClassResultModoel.getClassResultById(id);
 
-        res.json({
-            message: `Get Class Results id = ${id} success`,
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: `Get Class Results id = ${id} success`,
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
@@ -100,6 +114,7 @@ const deleteClassResult = async (req, res) => {
             message: 'Delete Class Result success',
             data: null
         });
+
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',

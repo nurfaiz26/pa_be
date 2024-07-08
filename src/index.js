@@ -14,8 +14,10 @@ const adminRoutes = require('./routes/admin')
 
 // middleware
 const middlewareLogRequest = require('./middleware/logs');
+const accessValidation = require('./middleware/accessValidation');
 // const fileUploadRequest = require('./middleware/multer');
 // const upload = require('./middleware/multer');
+
 
 // express config
 const app = express();
@@ -27,12 +29,12 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     next();
 });
-app.use('/users', usersRoutes);
-app.use('/patients', patientsRoutes);
-app.use('/class-results', classResultRoutes);
-app.use('/register', registerRoutes);
+app.use('/users', accessValidation, usersRoutes);
+app.use('/patients', accessValidation, patientsRoutes);
+app.use('/class-results', accessValidation, classResultRoutes);
+app.use('/register',  registerRoutes);
 app.use('/login', loginRoutes);
-app.use('/admin', adminRoutes);
+app.use('/admin', accessValidation, adminRoutes);
 app.use('/assets', express.static('public/images'));
 // app.use('upload', fileUploadRequest)
 
@@ -60,7 +62,7 @@ app.use('/upload', upload.any(), (req, res) => {
     res.json({
         message: 'Gambar terupload!',
         url: `http://localhost:${PORT}/assets/${imageName}`,
-        // url: `https://api.ichwunden.my.id/assets/${imageName}`,
+        // url: `http://api.ichwunden.my.id/assets/${imageName}`,
     });
 });
 app.use((err, req, res, next) => {

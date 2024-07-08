@@ -4,10 +4,17 @@ const getAllUsers = async (req, res) => {
     try {
         const [data] = await UserModoel.getAllUsers();
 
-        res.json({
-            message: 'Get all users success',
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: 'Get all users success',
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
@@ -21,11 +28,18 @@ const getUserById = async (req, res) => {
 
     try {
         const [data] = await UserModoel.getUserById(id);
-
-        res.json({
-            message: `Get users id = ${id} success`,
-            data: data
-        });
+       
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: `Get users id = ${id} success`,
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',

@@ -6,10 +6,17 @@ const getAllUsers = async (req, res) => {
     try {
         const [data] = await AdminModel.getAllUsers();
 
-        res.json({
-            message: 'Get all users success',
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: 'Get all Users success',
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
@@ -24,10 +31,17 @@ const getUserById = async (req, res) => {
     try {
         const [data] = await AdminModel.getUserById(id);
 
-        res.json({
-            message: `Get users id = ${id} success`,
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: `Get User id = ${id} success`,
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
@@ -183,10 +197,17 @@ const getAllPatients = async (req, res) => {
     try {
         const [data] = await AdminModel.getAllPatients();
 
-        res.json({
-            message: 'Get all Patients success',
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: 'Get all Patients success',
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
@@ -201,10 +222,17 @@ const getPatientById = async (req, res) => {
     try {
         const [data] = await AdminModel.getPatientById(id);
 
-        res.json({
-            message: `Get Patients id = ${id} success`,
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: `Get Patients id = ${id} success`,
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
@@ -294,10 +322,17 @@ const getAllClassResults = async (req, res) => {
     try {
         const [data] = await AdminModel.getAllClassResults();
 
-        res.json({
-            message: 'Get all Class Results success',
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: 'Get all Class Results success',
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
@@ -312,10 +347,17 @@ const getClassResultById = async (req, res) => {
     try {
         const [data] = await AdminModel.getClassResultById(id);
 
-        res.json({
-            message: `Get Class Results id = ${id} success`,
-            data: data
-        });
+        if(data[0] != null) {
+            console.log(data)
+            res.json({
+                message: `Get Class Results id = ${id} success`,
+                data: data
+            });
+        } else {
+            res.status(404).json({
+                message: 'Data not found!',
+            });
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Server Error',
